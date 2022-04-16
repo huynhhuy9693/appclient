@@ -1,0 +1,27 @@
+.card-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    .row{
+        justify-content: space-evenly;
+        .card{
+            .footer{
+                .other{
+                        margin-top: 8px;
+                }
+            }
+        }
+    }
+}
+  
+  .wish-icon{
+        color: #fc8019;
+        :hover{
+            color: #11c571;
+        };
+        ::after
+        {
+            background-color: red;
+        }
+       
+    }

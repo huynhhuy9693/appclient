@@ -1,0 +1,32 @@
+<div class="search-container container">
+    <div class="container-box">
+        <div class="middle">
+            <mat-form-field appearance="outline" class="search-box">
+                <input matInput placeholder="Seach For Restaurant Or Dishes" class="seach-input-text" 
+                [(ngModel)]="searchValue" (keyup.enter)="doSearch()">
+                <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearSearch()"
+                    style="top: -10px; right: 10px; font-size: 16px; font-weight: 500">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <button mat-button matPrefix mat-icon-button aria-label="Clear"
+                    style="top: -10px; left: 20px; font-size: 16px; font-weight: 500"
+                    (click)="this.doSearch()" >
+                    <mat-icon fontSet="material-icons-outlined">search</mat-icon>
+                </button>
+            </mat-form-field>
+
+            <div class="result-box">
+                <mat-tab-group animationDuration="1000ms" (selectedTabChange)="tabChanged($event)">
+                    <mat-tab label="RESTAURANT">
+                        <app-tab-restaurant></app-tab-restaurant>
+                    </mat-tab>
+                    <mat-tab label="FOOD">
+                        <app-tab-dishes></app-tab-dishes>
+                    </mat-tab>
+                   
+                  </mat-tab-group>        
+            </div>
+        </div>
+    </div>
+
+</div>

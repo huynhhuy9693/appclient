@@ -1,0 +1,113 @@
+<div class="single-restaurant-container ">
+    <div class="header-background">
+        <div class="header-container container" style="box-sizing: content-box;width: 100%;">
+            <div class="img-box">
+                <img mat-card-image style="width: 100%;" alt=""
+                    src="{{this.restaurant?.imageURL}}"><!-- -->
+            </div>
+            <div class="description-box">
+                <div>
+                    <div class="box-name">
+                        <h1 class="name">{{this.restaurant?.fullName}}</h1>
+                        <qrcode [qrdata]="restaurantQrCode" [width]="80" [errorCorrectionLevel]="'L'"></qrcode>
+                    </div>
+                    <p *ngIf="this.restaurant?.address != undefined" style="margin-bottom: 0;" class="total-items">{{ this.restaurant.address.street  }}, {{ this.restaurant.address.ward }}, {{ this.restaurant.address.district }}</p>
+                    <p *ngIf="this.restaurant?.address == undefined" style="margin-bottom: 0;" class="notfound-total-items">Address is updating...</p>
+                </div>
+                <div class="rating-box">
+                    <div class="box">
+                        <div class="upper-box">
+                            <ngx-material-rating [color]="color" [disabled]="false" [dense]="2"
+                                [readonly]="true" [(ngModel)]="rateTotal" [max]="5">
+                            </ngx-material-rating>
+                            <span>{{restaurant?.rateTotal}}</span>
+                        </div>
+                        <div class="lower-box">
+                            <span>
+                                {{restaurant?.rateCount}} Rating
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="box">
+                        <div class="upper-box"> 48 mins</div>
+                        <div class="lower-box">Delivery Time</div>
+                    </div>
+                    <div class="box">
+                        <div class="upper-box">₹ 200</div>
+                        <div class="lower-box">Cost for two</div>
+                    </div>
+                </div>
+            </div>
+            <div class="offer-box">
+                <div class="offer-container">
+                    <div class="offer">
+                        Offer
+                    </div>
+                    <div class="offer-text">
+                        <mat-icon class="offer-icon" fontSet="material-icons-outlined">local_offer</mat-icon>
+                        <div>
+                            30% off up to ₹75 on orders above ₹99 | Use coupon SWIGGY30
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="restaurant-body container">
+        <div class="left">
+            <mat-accordion displayMode="flat">
+                <mat-expansion-panel [disabled]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <a [routerLink]="['/restaurants',  this.currentRestaurantId ]" >Recommend</a>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+                <mat-expansion-panel [disabled]="true">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <a  [routerLink]="[{ outlets : { orderFoodList: ['review', this.currentRestaurantId ] }}]" >Review</a>                          
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                </mat-expansion-panel>
+                <!-- <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <span class="menu-header">Quick Bites</span>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <ul class="menu-ul">
+                        <li class="menu-li">Chats</li>
+                    </ul>
+                </mat-expansion-panel> -->
+
+                <!-- <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Beverages
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+
+                    <ul class="menu-ul">
+                        <li class="menu-li">Cold Beverages</li>
+                        <li class="menu-li">Hot Beverages</li>
+                        <li class="menu-li">Fresh Fruit Juices</li>
+                    </ul>
+                </mat-expansion-panel> -->
+            </mat-accordion>
+        </div>
+        <div class="middle">
+
+            <router-outlet name="orderFoodList"></router-outlet>
+
+        </div>
+        <div class="right">
+            
+            <app-cart-details-for-rest></app-cart-details-for-rest>
+
+        </div>
+    </div>
+</div>

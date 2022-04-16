@@ -1,0 +1,57 @@
+    <div style="margin-top: 10px">
+        <div class="card-container">
+            <div class="row row-cols-4">
+                <ng-container  *ngIf="restaurants?.length == 0" class="alert alert-warning col-md-12" role="alert">
+                    Not found.
+                </ng-container>
+                <div class="card mb-5" *ngFor="let restaurant of restaurants" (click)="goToRestaurant(restaurant)">
+                    <div > 
+                        <img alt="" width="212" height="160" [src]="restaurant.imageURL"><!----> 
+                    </div>
+                    <div class="footer" (click)="goToRestaurant(restaurant)"> <!---->
+                        <div >
+                            <div class="name">{{restaurant.fullName}}</div>
+                            <div class="address">{{ restaurant.address?.street }}, {{ restaurant.address?.ward }}, {{ restaurant.address?.district }}</div>
+                        </div>
+                        <div class="other" >
+                            <div class="other" (click)="goToRestaurant(restaurant)"><!---->
+                                <div class="rating">
+                                    <mat-icon class="star-icon">star</mat-icon>
+                                    <span>{{ restaurant?.rateCount != 0 ? restaurant?.rateTotal : 5}}</span>
+                                </div>
+                                <div class="mx-1">({{restaurant?.rateCount }} rates)</div>
+                            </div>
+                            <div class="wish-icon">
+                                <span class="material-icons-outlined" (click)="addFavourite(restaurant)">
+                                    favorite_border
+                                </span>
+                            </div>
+                        </div>
+                        <div class="offer">
+                            <mat-icon class="offer-icon" fontSet="material-icons-outlined">local_offer
+                            </mat-icon>
+                            <span class="offer-description">40% off | Use coupon SWIGGY40</span>
+                        </div>
+                        <div class="quick-view">
+                            <button mat-button (click)="openDialog(restaurant)">Rate now..</button>                      
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            
+        </div>
+    </div>                       
+
+    <div class="footer-pagination mt-5">
+        <div class="row">
+            <div class="col-md-6"></div>
+            <div class="col-md-6">
+                    <mat-paginator  [length]="theTotalElements"
+                                    [pageSize]="thePageSize"
+                                    [pageSizeOptions]="[8,16,32]"
+                                    (page)="changePaginator($event)"
+                                    aria-label="Select page">
+                    </mat-paginator>      
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,36 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" color="warn">close</mat-icon>
+  </button>
+
+<mat-grid-list cols="3" rowHeight="100px">
+    <mat-grid-tile [colspan]="1" [rowspan]="2">
+        <div class="img-box">
+            <img mat-card-image style="width: 100%;" alt=""
+                src="{{data.restaurant?.imageURL}} ">
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="2" [rowspan]="2">       
+        <div class="header-dialog">
+            <h2 mat-dialog-title>{{ data.restaurant.fullName | uppercase}}</h2>
+            <p *ngIf="data.restaurant?.address != undefined" style="margin-bottom: 15px;" class="total-items">{{ data.restaurant.address?.street }}, {{ data.restaurant.address?.ward }}, {{ data.restaurant.address?.district }}</p>
+            <p *ngIf="data.restaurant?.address == undefined" style="margin-bottom: 15px;" class="notfound-total-items">Address is updating...</p>
+            <hr/>
+            <ngx-material-rating [color]="color" [disabled]="false" [dense]="2"
+                [readonly]="false" [(ngModel)]="rate" [max]="5" >
+            </ngx-material-rating>
+            (Choice rating.)
+        </div>
+
+        
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="3" [rowspan]="1" style="margin-top: 10px;">    
+        <mat-form-field appearance="fill"  style="width: 100%;">
+            <mat-label>Textarea</mat-label>
+            <textarea matInput rows="5" cols="40" placeholder="text" [(ngModel)] = "note"></textarea>
+        </mat-form-field>
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div mat-dialog-actions class="float-end">
+    <button mat-raised-button color="accent" (click)="submitRating()">Submit</button>
+  </div>

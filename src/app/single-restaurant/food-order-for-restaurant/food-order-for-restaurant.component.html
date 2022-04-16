@@ -1,0 +1,29 @@
+<div class="list-view">
+    <h1 style="margin: 0;">Recommended</h1>
+    <span class="total-items">{{itemList.length}} ITEMS</span>
+    <div class="mini-card-container">       
+        <div class="mini-card" *ngFor="let item of itemList">
+            <div>
+                <img height="160" width="244" alt=""
+                    src="{{item.imageURL}}"><!---->
+            </div>
+            <div class="item">
+                <img src="https://img.icons8.com/color/18/000000/vegetarian-food-symbol.png">
+                <span style="margin-left: 5px;">{{item.name}}</span>
+            </div>
+            <div class="botom">
+                <div>{{item.price | currency: 'VND'}}</div>
+                <div class="add-remove-box">
+                    <button mat-icon-button (click)="remove(item)">
+                        <mat-icon class="star-icon" fontSet="material-icons-outlined">remove</mat-icon>
+                    </button>
+                    <button mat-icon-button (click)="add(item)">
+                        <mat-icon class="star-icon" fontSet="material-icons-outlined">add</mat-icon>
+                    </button>
+                </div>
+      
+            </div>
+        </div>
+
+    </div>
+</div>

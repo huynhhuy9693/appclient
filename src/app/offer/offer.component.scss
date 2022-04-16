@@ -1,0 +1,42 @@
+
+.offer-container{
+    margin-top: 80px;
+    width: 100%;
+}
+.offer-container-background {
+
+    background: #005062;
+    background-image: url("../../assets/image/offer/offer_banner.jpg");
+    background-position: bottom; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+.offer-container-title{
+    padding: 0 30px;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .title-text{
+        color: rgb(252, 151, 0);
+        // color: white; 
+        font: bold 24px/45px Helvetica, Sans-Serif; 
+        letter-spacing: -1px;  
+        background: rgb(0, 0, 0); /* fallback color */
+        background: rgba(0, 0, 0, 0.7);
+        padding: 10px; 
+        h1{
+            font-weight: 500;
+            font-size: 50px;
+        }
+        span{
+            font-size: 22px;
+            line-height: 1.2;
+            opacity: .8;
+        }
+    }
+}
+.offer-tabs{
+    margin-top: 30px;
+    padding: 0 20px;
+}

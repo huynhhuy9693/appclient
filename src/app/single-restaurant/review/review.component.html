@@ -1,0 +1,39 @@
+<section id="comments" class="comments-area wpex-mb-40 wpex-clr">
+
+    <!-- <ng-container *ngIf="ratingList.length == 0" else ratingBlock>
+        <h4 class="theme-heading border-bottom comments-title" >
+            <span class="text">This restaurant has no reviews yet</span>
+        </h4>
+    </ng-container> -->
+    
+    <!-- <ng-template #ratingBlock> -->
+        <h4 class="theme-heading border-bottom comments-title" >
+            <span class="text">This Restaurant Has {{ratingList.length}} Reviews</span>
+        </h4>
+        <ol class="comment-list" #ratingBlock> 
+            <div class="comment container-fluid">
+                <div class="row my-2" *ngFor="let item of ratingList; index as i">
+                    <div class="left col-md-2">
+                        <img src="https://picsum.photos/50" alt="">
+                    </div>
+                    <div class="right col-md-10">
+                        <p style="font-weight: bold;">{{item.customer.fullName | uppercase }}</p>
+                        <div class="comment-body">
+                            {{ item.note }}
+                        </div>
+                        <div class="comment-footer">
+                            <div class="rate">
+                                <ngx-material-rating [color]="color" [disabled]="false" [dense]="2"
+                                    [readonly]="true"  [(ngModel)]="ratingList[i].rate " [max]="5">
+                                </ngx-material-rating>
+                            </div>
+                            <span>{{ item.updatedAt | date: 'medium' }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ol>
+    <!-- </ng-template> -->
+
+    
+</section>

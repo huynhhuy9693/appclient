@@ -1,0 +1,48 @@
+<div class="cart-popover">
+    <ng-container  *ngIf="itemList?.length == 0">
+        <div class="main-container">
+            <a class="restaurant-box" [routerLink]="[{ outlets : { primary: ['restaurants', this.itemList[0]?.restanrantId] }}]" >
+                <div>
+                    <img src="https://i.imgur.com/dCdflKN.png" width="66" height="66">
+                </div>
+                <div class="restaurant-description">
+                    <div class="name">Your Cart is Empty</div>
+                    <div class="address">Add something to make me happy :)</div>
+                </div>
+            </a>
+        </div>
+    </ng-container>
+
+    <div class="main-container"  *ngIf="itemList?.length > 0">
+        <a class="restaurant-box" [routerLink]="[{ outlets : { primary: ['restaurants', this.itemList[0]?.restanrantId] }}]" >
+            <div>
+                <img height="70" width="70" alt="logo"
+                    src="https://res.cloudinary.com/huyhuynh/image/upload/v1649436957/logo1_pbe8uh.png">
+            </div>
+            <div class="restaurant-description">
+                <div class="name">{{ (this.cartService.$restaurantInCar| async)?.fullName | uppercase }}</div>
+                <div class="address">{{ (this.cartService.$restaurantInCar| async)?.address?.street }}</div>
+            </div>
+        </a>
+        <div class="item-info-box">
+            <ul class="items">
+                <li class="list" *ngFor="let item of itemList">
+                    <div class="item-name">
+                        <img src="https://img.icons8.com/color/15/000000/vegetarian-food-symbol.png">
+                        <span style="margin-left: 10px;">{{item.name}} x {{item.quantity}}</span>
+                    </div>
+                    <div style="margin-left: 10px">{{ item.quantity * item.price | currency: 'VND'}}</div>
+                </li>
+            </ul>
+        </div>
+        <div class="subtotal-box">
+            <div>Sub Total</div>
+            <div>{{this.totalPrice | currency: 'VND'}}</div>
+        </div>
+        <div class="checkout-button-box">
+            <a [routerLink]="['/cart']">
+                <button mat-raised-button class="checkoutButton">CHECKOUT</button>
+            </a>        
+        </div>
+    </div>
+</div>

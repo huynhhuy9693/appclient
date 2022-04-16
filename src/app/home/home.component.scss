@@ -1,0 +1,68 @@
+.home-container{
+    margin-top: 80px;
+    width: 100%;
+}
+.slider-background {
+    background-color: #171a29;
+    background-image: url("https://www.maggi.co.uk/sites/default/files/styles/maggi_desktop_image_style/public/NUK1265%20maggi%20Recipes%20banner%201500x700px%20opt2A.jpg?h=4f5b30f1&itok=DcsF1RwA");
+    background-position: bottom; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+.card-container{
+    row-gap: 3em;
+    .card{
+        img{
+            width: 100%;
+        }
+    }
+    .mini-card-container{
+        
+        .text-name{
+            min-height: 40px;
+            span{
+                font-style: italic;
+                opacity: 80%;
+                font-size: 12px;
+            }
+        }
+        .mini-card{
+            img{
+                width: 100%;
+            }
+            .botom{
+                float: right;
+                padding: 0 10px 10px 0;
+                font-weight: 600;
+            }
+        }
+    }
+}
+.slider{
+    position: relative;
+    margin: 0 auto;
+    height: 340px;
+    padding: 0 20px;
+    contain: content;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    .img-box{
+        transition: 0.5s;
+        cursor: pointer;
+    }
+    .img-box:hover{
+        transform: scale(1.05);
+    }
+}
+.title{
+    margin-top: 40px;
+    margin-bottom: 10px;
+    
+    padding: 0 30px;
+}
+
+.mini-card{
+    width: 250px;
+    border: 1px gainsboro solid;
+}

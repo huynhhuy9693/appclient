@@ -1,0 +1,62 @@
+<!--http://localhost:4200/my-account/orders-->
+<table mat-table [dataSource]="dataSource " class="mat-elevation-z8" >
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> ID. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+
+    
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Report">
+      <th mat-header-cell *matHeaderCellDef> Report </th>
+      <td mat-cell *matCellDef="let element"> 
+        <span class="material-icons" >
+          description
+        </span>
+      </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="orderTrackingNumber">
+      <th mat-header-cell *matHeaderCellDef> Order Tracking Number. </th>
+      <td mat-cell *matCellDef="let element"> {{element.orderTrackingNumber}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="totalPrice">
+      <th mat-header-cell *matHeaderCellDef> Total Price. </th>
+      <td mat-cell *matCellDef="let element"> {{ (element.totalPrice + element.shippingMoney) | currency: 'VND' }} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="totalQuantity">
+      <th mat-header-cell *matHeaderCellDef> Total Quantity. </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalQuantity}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Payment. </th>
+      <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+    </ng-container>
+
+        <!-- Symbol Column -->
+    <ng-container matColumnDef="createdAt">
+        <th mat-header-cell *matHeaderCellDef> Date. </th>
+        <td mat-cell *matCellDef="let element"> {{element.createdAt | date: 'medium'}} </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" (click)="openReport(row['orderTrackingNumber'])" ></tr>
+  </table> 
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons 
+    aria-label="Select page of periodic elements">
+  </mat-paginator>        

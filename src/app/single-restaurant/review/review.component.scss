@@ -1,0 +1,46 @@
+.wpex-mb-40 {
+    margin-bottom: 40px;
+}
+#comments{
+    .comments-title {
+        margin-bottom: 30px;
+    }
+    .comment-list{
+        .comment{
+            background-color: rgb(211, 210, 210, 0.2) ;
+            min-height: 100px;
+            .row{
+                height: inherit;
+                .left{
+                    padding: 10px;
+                    height: inherit;
+                    border-right: 1px solid rgba(126, 112, 112, 0.2);
+                    img{
+                        border-radius: 50%;
+                        margin-left: 10px;
+                    }
+                }
+                .right{
+                    padding: 10px;
+                    padding-right: 30px;
+                    .comment-body{
+                        text-align: justify;
+                        text-justify: newspaper;
+                    }
+                    .comment-footer{
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin: 15px 0px;
+                        font-weight: 200;
+                        opacity: 0.8;
+                    }
+                }
+            }
+        }
+    }
+}
+
+p {
+    margin: 0 0 20px;
+}

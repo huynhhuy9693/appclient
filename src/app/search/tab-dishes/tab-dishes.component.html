@@ -1,0 +1,38 @@
+<div style="margin-top: 10px">
+    <div class="mini-card-container">
+        <div class="mini-card" *ngFor="let dishes of dishesList" (click)="goToMyRestaurant(dishes)">
+            <div>
+                <img height="160" width="244" alt=""
+                    src="{{dishes?.imageURL}}"><!---->
+            </div>
+            <div class="item">
+                <span class="text-name" style="margin-left: 5px;">{{dishes?.name}}</span>
+                <span class="" style="margin-left: 5px;"></span><!--(Sell 999+)-->
+            </div>
+            <div class="botom">
+                <div>{{dishes?.price | currency: 'VND'}} </div>
+                <!-- <div class="add-remove-box">
+                    <mat-icon class="star-icon" fontSet="material-icons-outlined">remove
+                    </mat-icon>
+                    <span>0</span>
+                    <mat-icon class="star-icon" fontSet="material-icons-outlined">add</mat-icon>
+                </div> -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="footer-pagination mt-5">
+    <div class="row">
+        <div class="col-md-6"></div>
+        <div class="col-md-6">
+                <mat-paginator  [length]="theTotalElements"
+                                [pageSize]="thePageSize"
+                                [pageSizeOptions]="[8,16,32]"
+                                (page)="changePaginator($event)"
+                                aria-label="Select page">
+                </mat-paginator>      
+        </div>
+    </div>
+</div>

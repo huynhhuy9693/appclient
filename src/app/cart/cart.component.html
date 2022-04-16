@@ -1,0 +1,212 @@
+<!--http://localhost:4200/cart-->
+<div class="cart-container">
+
+    <div class="cart-container-box container">
+        <div class="left-container-box">
+            <!-- <div class="child-box" *ngIf="!isAutenticated">
+                <div>
+                    <h1>Account</h1>
+                    <span style="font-weight: 500; opacity: 0.6; font-size: 16px;">To place your order now, log in to
+                        your existing account or sign up.</span>
+                </div>
+                <div class="button-container">
+                    <div class="button-box">
+                        <button mat-raised-button class="default-button outline-success-button" style="width: 150px;" (click)="openLoginSideNav()">
+                            <span>LOG IN</span>
+                        </button>
+                    </div>
+                </div>
+            </div> -->
+            <form [formGroup]="checkoutFormGroup" (ngSubmit)="onSubmit()">
+                    <div class="child-box">
+                            <!-- customer form group -->
+                            <div formGroupName="customer" class="form-area">
+                                <h3 class="mb-4">Customer on Bill</h3>
+                            
+                                <div class="row">
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label>Full Name</mat-label>
+                                            <input type="text" matInput formControlName="fullName"  placeholder="Enter your name">
+                                            <mat-hint>* min-length 2 characters</mat-hint>
+                                            <mat-error *ngIf="fullName.hasError('notOnlyWhitespace') || fullName.hasError('required')">
+                                                Full Name is required
+                                            </mat-error>
+                                            <mat-error *ngIf="fullName.hasError('minlength')">
+                                                Full Name must be at least 2 characters long
+                                            </mat-error>
+                                        </mat-form-field>
+                                </div>
+
+                                <div class="row">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Phone Number</mat-label>
+                                        <input type="number" matInput formControlName="phoneNumber" placeholder="Ex. 0909656766">
+                                        <mat-hint>* min-length 8 characters</mat-hint>
+                                        <mat-error *ngIf="phoneNumber.hasError('required')">
+                                            Phone number is required
+                                        </mat-error>
+                                        <mat-error *ngIf="phoneNumber.hasError('pattern')">
+                                            Phone number must lest 8-11 characters!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                                <div class="row">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Email</mat-label>
+                                        <input type="email" matInput formControlName="email" placeholder="Ex. pat@example.com" readonly>
+                                        <mat-hint>* must requied </mat-hint>
+                                        <mat-error *ngIf="email.hasError('notOnlyWhitespace') || email.hasError('required')">
+                                            Email is required
+                                        </mat-error>
+                                        <mat-error *ngIf="email.hasError('pattern')">
+                                            Email invalid!
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+
+                            </div>
+                    </div>
+
+                    <div class="child-box">
+                        <!-- shippingAddress form group -->
+                        <div formGroupName="shippingAddress" class="form-area">
+                            <h3 class="mb-4">Delivery Address</h3>
+                        
+                            <div class="row">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Street</mat-label>
+                                        <input type="text" matInput formControlName="street" 
+                                            placeholder="Enter a place"  ngxAutocomPlace [options]="options" (selectedPlace)="placeChanged($event)">
+                                        <mat-hint>* min-length 2 characters</mat-hint>
+                                        <mat-error *ngIf="shippingAddressStreet.hasError('notOnlyWhitespace') || shippingAddressStreet.hasError('required')">
+                                            Street is required
+                                        </mat-error>
+                                        <mat-error *ngIf="fullName.hasError('minlength')">
+                                            Street must be at least 2 characters long
+                                        </mat-error>
+                                    </mat-form-field>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Ward</mat-label>
+                                        <input type="text" matInput formControlName="ward" 
+                                            placeholder="Ex. Phuong 1 or P.1">
+                                        <mat-hint>* min-length 2 characters</mat-hint>
+                                        <mat-error *ngIf="shippingAddressWard.hasError('notOnlyWhitespace') || shippingAddressWard.hasError('required')">
+                                            Ward is required
+                                        </mat-error>
+                                        <mat-error *ngIf="shippingAddressWard.hasError('minlength')">
+                                            Ward must be at least 2 characters long
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>District</mat-label>
+                                        <input type="text" matInput formControlName="district" 
+                                            placeholder="Ex. Q.Tan Binh">
+                                        <mat-hint>* min-length 2 characters</mat-hint>
+                                        <mat-error *ngIf="shippingAddressDistrict.hasError('notOnlyWhitespace') || shippingAddressDistrict.hasError('required')">
+                                            Ward is required
+                                        </mat-error>
+                                        <mat-error *ngIf="shippingAddressDistrict.hasError('minlength')">
+                                            Ward must be at least 2 characters long
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>City</mat-label>
+                                        <input type="text" matInput formControlName="city" 
+                                            placeholder="Ex. Ho Chi Minh or HCM">
+                                        <mat-hint>* min-length 2 characters</mat-hint>
+                                        <mat-error *ngIf="shippingAddressCity.hasError('notOnlyWhitespace') || shippingAddressCity.hasError('required')">
+                                            Ward is required
+                                        </mat-error>
+                                        <mat-error *ngIf="shippingAddressCity.hasError('minlength')">
+                                            Ward must be at least 2 characters long
+                                        </mat-error>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>State</mat-label>
+                                        <input type="text" matInput formControlName="state" 
+                                            placeholder="Ex. State">
+                                        <mat-hint></mat-hint>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Country</mat-label>
+                                        <input type="text" matInput formControlName="country" 
+                                            placeholder="Ex. Country">
+                                        <mat-hint></mat-hint>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>ZipCode</mat-label>
+                                        <input type="text" matInput formControlName="zipCode" 
+                                            placeholder="Ex. ZipCode">
+                                        <mat-hint></mat-hint>
+                                    </mat-form-field>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="child-box">
+                        <div>
+                            <h1>Choose payment method</h1>
+
+                        </div>
+                        <div class="second-view" style="background-color: white;">
+                            <div class="body" style="padding: 0;">
+                                <div class="row" style=" align-items:flex-end" >
+                                    <div class="col-md-6">
+                                        <div class="result-view">
+                                            <div class="result-box" style="border-right: 1px solid darkslategray">
+                                                <img class="_2tuBw _12_oN" width="140" height="80" alt=""
+                                                    src="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_140,h_80/image-pay-by-cash_av6bcw">
+                                                <div style="margin-top: 30px;display: flex; flex-direction: column;">
+                                                    <h3 style="font-weight: 400">Cash</h3>                                           
+                                                    <span style="margin-top: 10px; font-weight: 500; opacity: .5;">Please keep exact change handy to help us serve you better</span>
+                                                    <div class="button-box full-size-button-box">
+                                                        <button mat-raised-button class="default-button success-button" id="paypal-button-container" 
+                                                            type="submit"
+                                                            style="margin-top: 20px;">
+                                                            <span>PAY {{this.totalPrice | currency: 'VND'}}</span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6" style="padding: 10px;">
+                                        <div #paypalRef></div>
+                                    </div> 
+                                </div>                             
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+        </div>
+        <div class="right-container-box">
+            <app-cart-detail-check-out></app-cart-detail-check-out>
+            
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,85 @@
+<!--http://localhost:4200/cart-->
+<ng-container  *ngIf="items?.length == 0" class="alert alert-warning col-md-12" role="alert">
+    <div class="main-box">
+        <div class="container-fluid mt-100">
+            <div class="row">
+                <div class="col-md-12">
+                            <div class="col-sm-12 empty-cart-cls text-center"> <img src="https://i.imgur.com/dCdflKN.png" width="130" height="130" class="img-fluid mb-4 mr-3">
+                                <h3><strong>Your Cart is Empty</strong></h3>
+                                <h4>Add something to make me happy :)</h4>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<div class="main-box" *ngIf="items?.length > 0">
+    <div class="cart-header">
+        <div>
+            <img  height="50" width="50" alt=""
+                src="https://res.cloudinary.com/huyhuynh/image/upload/v1649436957/logo1_pbe8uh.png">
+        </div>
+        <div style="margin-left: 20px;">
+            <h3 style="font-weight: 500;">{{ restaurantInCart?.fullName}}</h3>
+            <span style="margin-top: 10px; font-weight: 500; opacity: 0.5;">{{ restaurantInCart?.address?.street}}, {{ restaurantInCart?.address?.ward}}, {{restaurantInCart?.address?.district}}</span>
+        </div>
+
+    </div>
+
+    <ul class="items">
+        <li class="list" *ngFor="let item of items">
+            <div class="item-name">
+                <img src="https://img.icons8.com/color/15/000000/vegetarian-food-symbol.png">
+                <span style="margin-left: 10px;">{{ item.name.trim() }}</span>
+            </div>
+            <div class="add-remove-box">
+                <mat-icon class="star-icon" fontSet="material-icons-outlined" (click)="remove(item)">remove</mat-icon>
+                <span>{{ item.quantity }}</span>
+                <mat-icon class="star-icon" fontSet="material-icons-outlined" (click)="add(item)">add</mat-icon>
+            </div>
+            <div style="margin-left: 10px">{{ item.price | currency: 'VND'}}</div>
+        </li>
+    </ul>
+    <div class="subtotal">
+        <div class="total-amount-box mb-4">
+            <div>Order Price</div>
+            <div [(ngModel)]="this.totalPrice">
+                {{this.totalPrice | currency: 'VND'}}
+            </div>
+        </div>
+    </div>
+    <div class="subtotal">
+            <div>Shipping Money
+                <span style="font-size: 13; font-weight: 500;">(  {{ 12000 | currency: 'VND'}}/Km  )</span>
+            </div>
+            <div class="d-flex justify-content-between my-3">
+                <span style="width: 100px;"></span>
+                <span style="font-size: 13; font-weight: 500;">{{ distance ? distance : 1 }} Km  </span> 
+                <span>{{ ((distance >= 1)? (fee_shipping * distance) : fee_shipping )| currency: 'VND'}}</span>
+
+            </div>
+    </div>
+    <!-- <div class="subtotal">
+        <input type="text"  class="form-control" placeholder="voucher" [(ngModel)]="voucher">
+        
+    </div> -->
+    <div class="subtotal">
+        <!-- <div class="total-amount-box">
+            <div>Voucher</div>
+            <div >
+                <input type="text"  class="form-control" placeholder="voucher" [(ngModel)]="voucher" (change)="onChangeText($event)">            
+            </div>
+
+        </div> -->
+    </div>
+    <div class="subtotal">
+        <div class="total-amount-box">
+            <div>Total Pay</div>
+            <div [(ngModel)]="this.totalPrice">
+                {{this.totalPrice + ( distance * fee_shipping) | currency: 'VND'}}
+            </div>
+
+        </div>
+    </div>
+</div>

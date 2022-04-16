@@ -1,0 +1,37 @@
+<!--http://localhost:4200/restaurants/id-->
+<h1 style="margin:0">Cart</h1>
+<div>
+    <!-- from  -->
+    <span style="font-weight: 600; color: #5d8ed5;"></span></div>
+<div class="total-items">{{ this.totalQuantity }} ITEMS</div>
+<ul class="items">
+    <li class="list" *ngFor="let item of items">
+        <div class="item-name">
+            <img src="https://img.icons8.com/color/15/000000/vegetarian-food-symbol.png">
+            <span style="margin-left: 5px;">{{ item.name }}</span>
+        </div>
+        <div class="add-remove-box">
+            <mat-icon class="star-icon" fontSet="material-icons-outlined" (click)="remove(item)">remove</mat-icon>
+            <span>{{ item. quantity }}</span>
+            <mat-icon class="star-icon" fontSet="material-icons-outlined" (click)="add(item)">add</mat-icon>
+        </div>
+        <div style="margin-left: 10px">{{ item.price | currency: 'VND'}}</div>
+    </li>
+</ul>
+<div class="subtotal">
+    <div class="total-amount-box">
+        <div>Subtotal</div>
+        <div>    
+            {{ this.totalPrice | currency: 'VND'}}
+        </div>
+
+    </div>
+    <div class="extra-charges-text">Extra charges may apply</div>
+    <div class="checkout-button-box">
+       <a [routerLink]="['/cart']">
+            <button mat-raised-button class="checkoutButton">CHECKOUT <mat-icon class="star-icon"
+                style="margin-top: 2px;" fontSet="material-icons-outlined">arrow_right_alt</mat-icon>
+            </button>
+       </a>
+    </div>
+</div>
