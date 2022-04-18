@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { LOCALE_ID} from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -90,7 +91,6 @@ import { RatingDialogComponent } from './shared/rating-dialog/rating-dialog.comp
 import { ReviewComponent } from './single-restaurant/review/review.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 import { ContactFormComponent } from './shared/help/contact-form/contact-form.component';
-
 
 const oktaConfig = Object.assign({ 
   onAuthRequired: (oktaAuth, injector) => {
@@ -194,7 +194,12 @@ const skltnConfig: SkltnConfig = {
   ],
   providers: [{provide: OKTA_CONFIG, useValue: oktaConfig},
               {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true},
-              {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+              {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
+              // { provide: LOCALE_ID,useValue: 'vn'},
+              // {provide:DEFAULT_CURRENCY_CODE,useValue:'VND'}
+            ],
+              
+              
   bootstrap: [AppComponent]
 })
 export class AppModule {}

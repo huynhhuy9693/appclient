@@ -183,10 +183,12 @@
                                                     <h3 style="font-weight: 400">Cash</h3>                                           
                                                     <span style="margin-top: 10px; font-weight: 500; opacity: .5;">Please keep exact change handy to help us serve you better</span>
                                                     <div class="button-box full-size-button-box">
+                                                        <hr>
                                                         <button mat-raised-button class="default-button success-button" id="paypal-button-container" 
                                                             type="submit"
                                                             style="margin-top: 20px;">
-                                                            <span>PAY {{this.totalPrice | currency: 'VND'}}</span>
+                    
+                                                            <span>PAY</span><!--{{this.totalPrice | currency: 'VND'}}-->
                                                         </button>
                                                     </div>
                                                 </div>

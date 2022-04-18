@@ -47,13 +47,14 @@ export class SingleRestaurantComponent implements OnInit {
       this.restaurantService.getRestaurantDetails(this.currentRestaurantId).subscribe(
           data => {
           console.log('-data-',data)
+          console.log('this.currentRestaurantId--'+ this.currentRestaurantId)
           this.restaurant = data              
           this.rateTotal = data.rateTotal;
           this.restaurantQrCode = `${this.restaurant.fullName} - ${this.restaurant.email}-'http://localhost:4200/restaurants/${this.restaurant.id}'}`
-          console.log('address restaurant : ' , this.restaurant)
         })
         this.AddressService.getAddressForRestaurant(this.currentRestaurantId).subscribe(
           data => {
+
               console.log('address', data)
           }
         )

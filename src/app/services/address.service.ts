@@ -13,9 +13,7 @@ export class AddressService {
   constructor(private httpClient: HttpClient) { }
 
   getAddressForRestaurant(restaurantId: number): Observable<Address>{
-      const getUrl = `${this.api}/search/findByRestaurant?id=${restaurantId}`;
+      const getUrl = `http://localhost:8080/api/restaurants/${restaurantId}/address`;
       return this.httpClient.get<Address>(getUrl);
   }
 }
-
-
