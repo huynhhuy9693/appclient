@@ -42,7 +42,7 @@ export class RatingDialogComponent implements OnInit {
     {
       if (this.rate != 0 || this.note.trim() != '') {
         this.ratingService.submitRating(data);
-        alert('thank for rating')
+        alert('thank')
     }
     }else
     {

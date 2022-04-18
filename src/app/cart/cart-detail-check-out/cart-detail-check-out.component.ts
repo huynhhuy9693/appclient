@@ -25,7 +25,7 @@ export class CartDetailCheckOutComponent implements OnInit {
   totalPrice: number = 0;
   totalQuantity:number = 0;
   distance : number = 0;
-  fee_shipping:number = 12000;
+  fee_shipping:number = 5000;
   voucher:String='';
 
   restaurantInCart : Restaurant;

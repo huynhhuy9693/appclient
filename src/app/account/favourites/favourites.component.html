@@ -19,7 +19,7 @@
         <div class="card" *ngFor="let restaurant of restaurants" >
             <div (click)="goToRestaurant(restaurant)">
                 <img alt="Ancient Hyderabad" width="254" height="160"
-                src=""><!--{{this.restaurant?.imageURL}}-->
+                src="{{this.restaurant?.imageURL}}"><!--{{this.restaurant?.imageURL}}-->
                 <!-- <div class="exclusive"
                     style="background: rgb(250, 74, 91); color: rgb(255, 255, 255);border-color: rgb(209, 42, 59) transparent;">
                     exclusive
