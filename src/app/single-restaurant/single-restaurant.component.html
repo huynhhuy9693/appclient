@@ -11,7 +11,7 @@
                         <h1 class="name">{{this.restaurant?.fullName}}</h1>
                         <qrcode [qrdata]="restaurantQrCode" [width]="80" [errorCorrectionLevel]="'L'"></qrcode>
                     </div>
-                    <p *ngIf="this.restaurant?.address != undefined" style="margin-bottom: 0;" class="total-items">{{ this.restaurant.address.street  }}, {{ this.restaurant.address.ward }}, {{ this.restaurant.address.district }}</p>
+                    <p *ngIf="this.restaurant?.address != undefined" style="margin-bottom: 0;" class="total-items">{{ this.restaurant.address?.street  }}, {{ this.restaurant.address?.ward }}, {{ this.restaurant.address?.district }}</p>
                     <p *ngIf="this.restaurant?.address == undefined" style="margin-bottom: 0;" class="notfound-total-items">Address is updating...</p>
                 </div>
                 <div class="rating-box">

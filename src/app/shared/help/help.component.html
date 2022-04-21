@@ -3,7 +3,7 @@
     <div class="container py-5">
       <div class="row h-100 align-items-center py-5">
         <div class="col-lg-6">
-          <h1 class="display-4">About us page</h1>
+          <h1 class="display-4">About us</h1>
           <p class="lead text-muted"> <a href="https://bootstrapious.com/snippets" class="text-muted"> 
                       <u></u></a>
           </p>
@@ -76,10 +76,38 @@
             </ul>
           </div>
         </div>
-        <!-- End-->  
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.256529140717!2d106.64286331474905!3d10.791653992311165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752eb337217971%3A0x1d4c9d29a9a8d2a5!2zMjQ3IELDoHUgQ8OhdCwgUGjGsOG7nW5nIDEyLCBUw6JuIELDrG5oLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1650270750343!5m2!1svi!2s" 
-                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>        
+        <!-- End-->                 
         </div>
     </div>
 </div>
+<hr>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-6">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.256529140717!2d106.64286331474905!3d10.791653992311165!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31752eb337217971%3A0x1d4c9d29a9a8d2a5!2zMjQ3IELDoHUgQ8OhdCwgUGjGsOG7nW5nIDEyLCBUw6JuIELDrG5oLCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1650270750343!5m2!1svi!2s" 
+                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe> 
+    </div>
+    <div class="col-6">
+      <div class="container">
+        <form (ngSubmit)="onSubmit()">
+          <label for="fname">Full Name</label>
+          <input type="text" id="fname" name="fullName" placeholder="Your name.." pattern="[A-Za-z0-9'\.\-\s\,]">
+      
+          <label for="lname">Email</label>
+          <input type="text" id="lname" name="email" placeholder="Your Email.." pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" >
+      
+          <label for="lname">Subject</label>
+          <input type="text" id="lname" name="subject" placeholder="Your Subject.." pattern="[A-Za-z0-9'\.\-\s\,]">
+      
+          <label for="subject">Comment</label>
+          <textarea id="subject" name="comment" placeholder="Write something.." style="height:150px" pattern="[A-Za-z0-9'\.\-\s\,]"></textarea>
+      
+          <input type="submit" value="Submit" routerLink = "restaurant">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+      

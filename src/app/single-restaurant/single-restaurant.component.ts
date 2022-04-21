@@ -54,7 +54,6 @@ export class SingleRestaurantComponent implements OnInit {
         })
         this.AddressService.getAddressForRestaurant(this.currentRestaurantId).subscribe(
           data => {
-
               console.log('address', data)
           }
         )

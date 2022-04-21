@@ -47,7 +47,7 @@ export class OrderHistoryComponent implements OnInit ,AfterViewInit {
     //read the user's email address from browser storage
     let theEmail = JSON.parse(this.storage.getItem("userEmail"));
     if (theEmail == null) {
-      theEmail = "khoaimiday@gmail.com";
+      theEmail = "huynhhuy9693@gmail.com";
     }
 
     //retrieve data from the service

@@ -12,7 +12,7 @@
         </div>
         <div class="add-remove-box">
             <mat-icon class="star-icon" fontSet="material-icons-outlined" (click)="remove(item)">remove</mat-icon>
-            <span>{{ item. quantity }}</span>
+            <span>{{ item. quantity  }}</span>
             <mat-icon class="star-icon" fontSet="material-icons-outlined" (click)="add(item)">add</mat-icon>
         </div>
         <div style="margin-left: 10px">{{ item.price | currency: 'VND'}}</div>

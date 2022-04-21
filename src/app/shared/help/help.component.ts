@@ -24,5 +24,8 @@ export class HelpComponent implements OnInit {
   ngOnInit() {
    
   }
-
+  onSubmit()
+  {
+    console.log('send')    
+  }
 }

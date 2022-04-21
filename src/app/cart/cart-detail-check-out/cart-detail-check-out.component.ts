@@ -11,6 +11,8 @@ import { LoginService } from 'src/app/services/login.service';
 import { RestaurantsService } from 'src/app/services/restaurants.service';
 
 
+
+
 @Component({
   selector: 'app-cart-detail-check-out',
   templateUrl: './cart-detail-check-out.component.html',
@@ -25,7 +27,7 @@ export class CartDetailCheckOutComponent implements OnInit {
   totalPrice: number = 0;
   totalQuantity:number = 0;
   distance : number = 0;
-  fee_shipping:number = 5000;
+  fee_shipping:number = 15000;
   voucher:String='';
 
   restaurantInCart : Restaurant;

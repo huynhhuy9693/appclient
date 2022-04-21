@@ -200,7 +200,7 @@ export class CartComponent implements OnInit, AfterViewInit{
   getTotalPriceExchange() {
     let distance = this.CartDetailCheckOutComponentRef.distance;
     let fee_ship = this.CartDetailCheckOutComponentRef.fee_shipping;
-    let shipping_money = ( distance >= 1) ? ( distance * fee_ship) : (1 * fee_ship);
+    let shipping_money = ( distance >= 3) ? ( (distance-3 )* fee_ship) : (0);//1 * fee_ship
     this.totalPriceExchange = (this.totalPrice + shipping_money)/24000;
   }
 
@@ -281,9 +281,9 @@ export class CartComponent implements OnInit, AfterViewInit{
     let order = new Order();
     order.totalPrice = this.totalPrice;
     order.totalQuantity = this.totalQuantity;
-    order.shippingMoney =  (this.CartDetailCheckOutComponentRef.distance >= 1)? 
-                                      ( this.CartDetailCheckOutComponentRef.distance * this.cardDetailCheckOut.fee_shipping ): 
-                                              ( 1 * this.cardDetailCheckOut.fee_shipping); 
+    order.shippingMoney =  (this.CartDetailCheckOutComponentRef.distance >= 3)? 
+                                      ( (this.CartDetailCheckOutComponentRef.distance-3) * this.cardDetailCheckOut.fee_shipping ): 
+                                               (0); //1 * this.cardDetailCheckOut.fee_shipping
     order.status = payment;
 
     //get cart items
